@@ -61,7 +61,7 @@ public class Solver {
 	}
 
 	public static void main(String[] args) {
-		InputStream in = Tableau.class.getClassLoader().getResourceAsStream("riddles/testriddle");
+		InputStream in = Tableau.class.getClassLoader().getResourceAsStream("riddles/testriddle3");
 		Scanner s = new Scanner(in).useDelimiter("\\A");
 		Tableau tab = Tableau.createTableau(s.next());
 		System.out.println("solving: ");
