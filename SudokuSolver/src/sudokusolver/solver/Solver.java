@@ -6,9 +6,8 @@ import java.util.List;
 import java.util.Scanner;
 
 import sudokusolver.riddle.Tableau;
-import sudokusolver.strategies.BlockStrategy;
-import sudokusolver.strategies.ColumnStrategy;
-import sudokusolver.strategies.RowStrategy;
+import sudokusolver.strategies.OnceIn;
+import sudokusolver.strategies.RemoveExisting;
 import sudokusolver.strategies.Strategy;
 
 public class Solver {
@@ -23,9 +22,12 @@ public class Solver {
 
 		// What Set of strategies are needed, such that no Brute is required???
 
-		strategies.add(new RowStrategy());
-		strategies.add(new ColumnStrategy());
-		strategies.add(new BlockStrategy());
+		strategies.add(new RemoveExisting(t -> t.getBlocks()));
+		strategies.add(new RemoveExisting(t -> t.getColumns()));
+		strategies.add(new RemoveExisting(t -> t.getRows()));
+		strategies.add(new OnceIn(t -> t.getBlocks()));
+		strategies.add(new OnceIn(t -> t.getColumns()));
+		strategies.add(new OnceIn(t -> t.getRows()));
 	}
 
 	public void solveStep() {
@@ -59,7 +61,7 @@ public class Solver {
 	}
 
 	public static void main(String[] args) {
-		InputStream in = Tableau.class.getClassLoader().getResourceAsStream("riddles/testriddle2");
+		InputStream in = Tableau.class.getClassLoader().getResourceAsStream("riddles/testriddle");
 		Scanner s = new Scanner(in).useDelimiter("\\A");
 		Tableau tab = Tableau.createTableau(s.next());
 		System.out.println("solving: ");
