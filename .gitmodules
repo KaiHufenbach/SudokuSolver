@@ -1,3 +1,9 @@
 [submodule "SudokuSolver/examples"]
 	path = SudokuSolver/examples
 	url = ssh://git@github.com/toonn/sudoku-collection.git
+[submodule "src/examples"]
+	path = src/examples
+	url = ssh://git@github.com/toonn/sudoku-collection.git
+[submodule "SudokuSolver/src/examples"]
+	path = SudokuSolver/src/examples
+	url = ssh://git@github.com/toonn/sudoku-collection.git
